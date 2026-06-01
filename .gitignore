@@ -1,0 +1,7 @@
+.env
+data/*
+!data/.gitkeep
+!data/radar.sqlite3
+logs/
+__pycache__/
+*.pyc

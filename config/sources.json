@@ -1,0 +1,536 @@
+[
+  {
+    "name": "Finextra",
+    "url": "https://www.finextra.com/rss/headlines.aspx",
+    "type": "rss",
+    "enabled": false,
+    "tags": [
+      "news",
+      "banking",
+      "payments"
+    ],
+    "note": "Paused by request: broad news/company RSS was too noisy for Infini content operations; keep YouTube/Substack/newsletter sources primary."
+  },
+  {
+    "name": "The Fintech Times",
+    "url": "https://thefintechtimes.com/feed/",
+    "type": "rss",
+    "enabled": false,
+    "tags": [
+      "news",
+      "fintech"
+    ],
+    "note": "Paused by request: broad news/company RSS was too noisy for Infini content operations; keep YouTube/Substack/newsletter sources primary."
+  },
+  {
+    "name": "PYMNTS",
+    "url": "https://www.pymnts.com/feed/",
+    "type": "rss",
+    "enabled": false,
+    "tags": [
+      "news",
+      "payments",
+      "commerce"
+    ],
+    "note": "Paused by request: broad news/company RSS was too noisy for Infini content operations; keep YouTube/Substack/newsletter sources primary."
+  },
+  {
+    "name": "Fintech Futures",
+    "url": "https://www.fintechfutures.com/feed/",
+    "type": "rss",
+    "enabled": false,
+    "tags": [
+      "news",
+      "banking",
+      "neobank"
+    ],
+    "note": "Returned 403 during validation."
+  },
+  {
+    "name": "The Paypers",
+    "url": "https://thepaypers.com/rss-feeds",
+    "type": "rss",
+    "enabled": false,
+    "tags": [
+      "news",
+      "payments",
+      "cross-border",
+      "ecommerce"
+    ],
+    "note": "RSS page found, but exact XML feed endpoint still needs confirmation."
+  },
+  {
+    "name": "PaymentsJournal",
+    "url": "https://www.paymentsjournal.com/feed/",
+    "type": "rss",
+    "enabled": false,
+    "tags": [
+      "news",
+      "payments",
+      "fraud",
+      "commerce"
+    ],
+    "note": "Paused by request: broad news/company RSS was too noisy for Infini content operations; keep YouTube/Substack/newsletter sources primary."
+  },
+  {
+    "name": "Glenbrook Payments Views",
+    "url": "https://glenbrook.com/payments_views/feed/",
+    "type": "rss",
+    "enabled": false,
+    "tags": [
+      "analysis",
+      "payments",
+      "payment-infra"
+    ],
+    "note": "Paused by request: broad news/company RSS was too noisy for Infini content operations; keep YouTube/Substack/newsletter sources primary."
+  },
+  {
+    "name": "Stripe Newsroom",
+    "url": "https://stripe.com/newsroom/news.rss",
+    "type": "rss",
+    "enabled": false,
+    "tags": [
+      "company",
+      "payments",
+      "stripe"
+    ],
+    "note": "Returned 404 during validation; YouTube/Stripe Blog can cover Stripe for now."
+  },
+  {
+    "name": "Stripe Blog",
+    "url": "https://stripe.com/blog/feed.rss",
+    "type": "rss",
+    "enabled": false,
+    "tags": [
+      "company",
+      "payments",
+      "developer",
+      "stripe"
+    ],
+    "note": "Paused by request: broad news/company RSS was too noisy for Infini content operations; keep YouTube/Substack/newsletter sources primary."
+  },
+  {
+    "name": "Adyen Knowledge Hub",
+    "url": "https://adyen.blog/knowledge-hub",
+    "type": "rss",
+    "enabled": false,
+    "tags": [
+      "company",
+      "payments",
+      "adyen"
+    ],
+    "note": "Adyen content page is useful, but no stable public RSS endpoint has been confirmed."
+  },
+  {
+    "name": "Visa Blog",
+    "url": "https://usa.visa.com/visa-everywhere/blog.xml",
+    "type": "rss",
+    "enabled": false,
+    "tags": [
+      "company",
+      "payments",
+      "visa"
+    ],
+    "note": "Returned 404 during validation; Visa YouTube remains enabled."
+  },
+  {
+    "name": "Mastercard Newsroom",
+    "url": "https://www.mastercard.com/news/rss.xml",
+    "type": "rss",
+    "enabled": false,
+    "tags": [
+      "company",
+      "payments",
+      "mastercard"
+    ],
+    "note": "Returned 403 during validation; Mastercard YouTube remains enabled."
+  },
+  {
+    "name": "Murmurations - Nic Carter",
+    "url": "https://murmurationstwo.substack.com/feed",
+    "type": "substack",
+    "enabled": true,
+    "tags": [
+      "kol",
+      "newsletter",
+      "stablecoins",
+      "crypto",
+      "policy"
+    ]
+  },
+  {
+    "name": "Fintech Blueprint - Lex Sokolin",
+    "url": "https://lex.substack.com/feed",
+    "type": "substack",
+    "enabled": true,
+    "tags": [
+      "kol",
+      "newsletter",
+      "fintech",
+      "ai",
+      "crypto"
+    ]
+  },
+  {
+    "name": "Fintech Brainfood - Simon Taylor",
+    "url": "https://www.fintechbrainfood.com/feed",
+    "type": "newsletter",
+    "enabled": false,
+    "tags": [
+      "kol",
+      "newsletter",
+      "payments",
+      "banking",
+      "stablecoins"
+    ],
+    "note": "Returned 404 during validation; keep disabled until a working feed URL is confirmed."
+  },
+  {
+    "name": "Fintech Wrap Up - Sam Boboev",
+    "url": "https://www.fintechwrapup.com/feed",
+    "type": "newsletter",
+    "enabled": true,
+    "tags": [
+      "kol",
+      "newsletter",
+      "payments",
+      "ai",
+      "fintech"
+    ]
+  },
+  {
+    "name": "Cashless - Rich Turrin",
+    "url": "https://richturrin.substack.com/feed",
+    "type": "substack",
+    "enabled": true,
+    "tags": [
+      "kol",
+      "newsletter",
+      "payments",
+      "cashless",
+      "china"
+    ]
+  },
+  {
+    "name": "insights4vc - Jas Shah",
+    "url": "https://insights4vc.substack.com/feed",
+    "type": "substack",
+    "enabled": true,
+    "tags": [
+      "kol",
+      "newsletter",
+      "vc",
+      "fintech"
+    ]
+  },
+  {
+    "name": "Fintech Takes - Alex Johnson",
+    "url": "https://fintechtakes.com/feed",
+    "type": "newsletter",
+    "enabled": true,
+    "tags": [
+      "kol",
+      "newsletter",
+      "strategy",
+      "banking"
+    ]
+  },
+  {
+    "name": "This Week in Fintech Newsletter",
+    "url": "https://www.thisweekinfintech.com/rss/",
+    "type": "newsletter",
+    "enabled": false,
+    "tags": [
+      "newsletter",
+      "fintech",
+      "payments",
+      "funding"
+    ],
+    "note": "Returned 404 during validation; YouTube/podcast alternatives remain enabled."
+  },
+  {
+    "name": "On The Brink - Nic Carter",
+    "url": "https://onthebrink-podcast.com/feed/podcast/",
+    "type": "podcast",
+    "enabled": false,
+    "tags": [
+      "podcast",
+      "stablecoins",
+      "crypto",
+      "policy"
+    ],
+    "note": "Returned 404 during validation; Murmurations remains enabled."
+  },
+  {
+    "name": "Tokenized",
+    "url": "https://feeds.simplecast.com/aP3WKDn4",
+    "type": "podcast",
+    "enabled": true,
+    "tags": [
+      "podcast",
+      "stablecoins",
+      "tokenization",
+      "payments"
+    ]
+  },
+  {
+    "name": "Payments on Fire",
+    "url": "https://glenbrook.com/payments-on-fire/feed/podcast/",
+    "type": "podcast",
+    "enabled": false,
+    "tags": [
+      "podcast",
+      "payments",
+      "payment-infra",
+      "fraud"
+    ],
+    "note": "Returned 404 during validation; YouTube channel/playlist remain enabled."
+  },
+  {
+    "name": "Unchained - Laura Shin",
+    "url": "https://unchainedcrypto.com/feed/podcast/",
+    "type": "podcast",
+    "enabled": false,
+    "tags": [
+      "podcast",
+      "crypto",
+      "stablecoins",
+      "regulation"
+    ],
+    "note": "Returned non-XML content during validation; YouTube channel remains enabled."
+  },
+  {
+    "name": "Around The Coin",
+    "url": "https://feeds.buzzsprout.com/1625068.rss",
+    "type": "podcast",
+    "enabled": true,
+    "tags": [
+      "podcast",
+      "payments",
+      "crypto",
+      "fintech"
+    ]
+  },
+  {
+    "name": "This Week in Fintech Podcast",
+    "url": "https://feeds.buzzsprout.com/1851538.rss",
+    "type": "podcast",
+    "enabled": false,
+    "tags": [
+      "podcast",
+      "fintech",
+      "payments",
+      "founders"
+    ],
+    "note": "Returned 404 during validation; YouTube remains enabled."
+  },
+  {
+    "name": "Breaking Banks",
+    "url": "https://www.voiceamerica.com/rss/show/2193",
+    "type": "podcast",
+    "enabled": false,
+    "tags": [
+      "podcast",
+      "banking",
+      "fintech",
+      "payments"
+    ],
+    "note": "TLS error on this legacy feed; YouTube playlist remains enabled."
+  },
+  {
+    "name": "11:FS Fintech Insider",
+    "url": "https://feeds.acast.com/public/shows/fintechinsider",
+    "type": "podcast",
+    "enabled": false,
+    "tags": [
+      "podcast",
+      "banking",
+      "fintech"
+    ],
+    "note": "Previous feed returned 404 in validation; keep disabled until a fresh feed URL is confirmed."
+  },
+  {
+    "name": "The Mint",
+    "url": "https://pod.link/1575762146/rss",
+    "type": "podcast",
+    "enabled": false,
+    "tags": [
+      "podcast",
+      "stablecoins",
+      "web3"
+    ],
+    "note": "Included from your watchlist, but this needs exact RSS confirmation before enabling."
+  },
+  {
+    "name": "Tokenized - YouTube",
+    "url": "https://www.youtube.com/@TokenizedPodcast",
+    "type": "youtube",
+    "enabled": true,
+    "tags": [
+      "podcast",
+      "youtube",
+      "stablecoins",
+      "tokenization",
+      "rwa",
+      "payments"
+    ],
+    "note": "Hosted by Simon Taylor and Visa's Cuy Sheffield; focuses on stablecoins, tokenization, and RWA."
+  },
+  {
+    "name": "The Mint Podcast - YouTube",
+    "url": "https://www.youtube.com/@itsmintpodcast",
+    "type": "youtube",
+    "enabled": true,
+    "tags": [
+      "podcast",
+      "youtube",
+      "crypto",
+      "creator-economy",
+      "web3"
+    ],
+    "note": "Adam Levy's Mint Podcast / It's Mint Podcast."
+  },
+  {
+    "name": "Payments on Fire - YouTube",
+    "url": "https://www.youtube.com/@paymentsonfire",
+    "type": "youtube",
+    "enabled": true,
+    "tags": [
+      "podcast",
+      "youtube",
+      "payments",
+      "payment-infra",
+      "glenbrook"
+    ]
+  },
+  {
+    "name": "Payments on Fire Playlist - YouTube",
+    "url": "https://www.youtube.com/playlist?list=PL7QysFEn4WtUdNxCEIGl22IFUehQhnx5n",
+    "type": "youtube_playlist",
+    "enabled": true,
+    "tags": [
+      "podcast",
+      "youtube",
+      "payments",
+      "payment-infra",
+      "glenbrook"
+    ]
+  },
+  {
+    "name": "Unchained - Laura Shin - YouTube",
+    "url": "https://www.youtube.com/c/unchainedpodcast",
+    "type": "youtube",
+    "enabled": true,
+    "tags": [
+      "podcast",
+      "youtube",
+      "crypto",
+      "stablecoins",
+      "regulation"
+    ]
+  },
+  {
+    "name": "Around The Coin - YouTube",
+    "url": "https://www.youtube.com/user/aroundthecoin",
+    "type": "youtube",
+    "enabled": true,
+    "tags": [
+      "podcast",
+      "youtube",
+      "payments",
+      "crypto",
+      "fintech"
+    ]
+  },
+  {
+    "name": "This Week in Fintech - YouTube",
+    "url": "https://www.youtube.com/@twifintech",
+    "type": "youtube",
+    "enabled": true,
+    "tags": [
+      "podcast",
+      "youtube",
+      "fintech",
+      "payments",
+      "founders"
+    ]
+  },
+  {
+    "name": "Breaking Banks Playlist - YouTube",
+    "url": "https://www.youtube.com/playlist?list=PL6GGVJxhttotq30i7ww1tkAprmVTtjaqt",
+    "type": "youtube_playlist",
+    "enabled": true,
+    "tags": [
+      "podcast",
+      "youtube",
+      "banking",
+      "fintech",
+      "payments"
+    ]
+  },
+  {
+    "name": "Stripe - YouTube",
+    "url": "https://www.youtube.com/stripe",
+    "type": "youtube",
+    "enabled": true,
+    "tags": [
+      "company",
+      "youtube",
+      "payments",
+      "stripe",
+      "internet-economy"
+    ]
+  },
+  {
+    "name": "Visa - YouTube",
+    "url": "https://www.youtube.com/channel/UCvqKb7KRw1vbkYiJihoYE8w",
+    "type": "youtube",
+    "enabled": true,
+    "tags": [
+      "company",
+      "youtube",
+      "payments",
+      "visa",
+      "stablecoins",
+      "crypto-payments"
+    ]
+  },
+  {
+    "name": "Mastercard - YouTube",
+    "url": "https://www.youtube.com/mastercard",
+    "type": "youtube",
+    "enabled": true,
+    "tags": [
+      "company",
+      "youtube",
+      "payments",
+      "mastercard",
+      "commerce"
+    ]
+  },
+  {
+    "name": "Adyen - YouTube",
+    "url": "https://www.youtube.com/channel/UCFKNZ5xIwVWzT1obipkT9LQ",
+    "type": "youtube",
+    "enabled": true,
+    "tags": [
+      "company",
+      "youtube",
+      "payments",
+      "adyen"
+    ]
+  },
+  {
+    "name": "Adyen Payments 101 Playlist - YouTube",
+    "url": "https://www.youtube.com/playlist?list=PL6agz7H5yEoZ4kqKdniDJPiAwhdIAjlBg",
+    "type": "youtube_playlist",
+    "enabled": true,
+    "tags": [
+      "company",
+      "youtube",
+      "payments",
+      "adyen",
+      "payments-101"
+    ]
+  }
+]

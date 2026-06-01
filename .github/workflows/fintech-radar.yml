@@ -1,0 +1,56 @@
+name: Fintech Radar
+
+on:
+  workflow_dispatch:
+  schedule:
+    # GitHub Actions uses UTC. These are 09:00 and 18:00 Asia/Shanghai.
+    - cron: "0 1,10 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fintech-radar
+  cancel-in-progress: false
+
+jobs:
+  push-updates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run radar
+        env:
+          LARK_WEBHOOK_URL: ${{ secrets.LARK_WEBHOOK_URL }}
+          LARK_SECRET: ${{ secrets.LARK_SECRET }}
+          TRANSLATE_TO_ZH: "true"
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-4.1-mini' }}
+          RADAR_DB_PATH: data/radar.sqlite3
+          RADAR_SOURCES: config/sources.json
+          RADAR_CATEGORIES: config/categories.json
+        run: |
+          python -m fintech_radar --once --lookback-days 3 --timeout 8
+
+      - name: Commit dedupe database
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/radar.sqlite3
+          if git diff --cached --quiet; then
+            echo "No dedupe database changes to commit."
+          else
+            git commit -m "Update fintech radar dedupe database"
+            git pull --rebase
+            git push
+          fi
