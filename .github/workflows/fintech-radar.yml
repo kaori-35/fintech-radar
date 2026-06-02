@@ -40,7 +40,7 @@ jobs:
           RADAR_SOURCES: config/sources.json
           RADAR_CATEGORIES: config/categories.json
         run: |
-          python -m fintech_radar --once --lookback-days 3 --timeout 8
+          python -m fintech_radar --once --lookback-days 3 --timeout 8 --notify-empty
 
       - name: Commit dedupe database
         run: |

@@ -118,6 +118,16 @@ def run_once(args) -> int:
             break
 
     if not new_items:
+        if args.notify_empty and not args.dry_run:
+            webhook_url = os.getenv("LARK_WEBHOOK_URL", "")
+            secret = os.getenv("LARK_SECRET", "")
+            if not webhook_url:
+                raise RuntimeError("LARK_WEBHOOK_URL is required for --notify-empty.")
+            LarkClient(webhook_url=webhook_url, secret=secret).send_text(
+                "Fintech Radar: 本轮无新增内容。"
+            )
+            print("Sent empty update notice to Lark.")
+            return 0
         print("No new items.")
         return 0
 
@@ -150,6 +160,7 @@ def main() -> None:
     parser.add_argument("--lookback-days", type=int, default=3, help="Ignore items older than this many days.")
     parser.add_argument("--max-items", type=int, default=0, help="Stop after collecting this many new items.")
     parser.add_argument("--verbose", action="store_true", help="Print source-by-source progress.")
+    parser.add_argument("--notify-empty", action="store_true", help="Send a Lark notice even when no new items are found.")
     parser.add_argument(
         "--future-grace-days",
         type=int,
