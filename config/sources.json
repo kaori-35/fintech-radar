@@ -236,6 +236,24 @@
     ]
   },
   {
+    "name": "Blockstories",
+    "url": "https://www.blockstories.io/",
+    "type": "webpage",
+    "enabled": true,
+    "max_items": 8,
+    "same_domain_only": true,
+    "tags": [
+      "newsletter",
+      "research",
+      "digital-assets",
+      "stablecoins",
+      "tokenization",
+      "rwa",
+      "institutional"
+    ],
+    "note": "No public RSS feed found on the site; using webpage link extraction."
+  },
+  {
     "name": "This Week in Fintech Newsletter",
     "url": "https://www.thisweekinfintech.com/rss/",
     "type": "newsletter",

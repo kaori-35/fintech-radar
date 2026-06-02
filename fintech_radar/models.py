@@ -11,6 +11,8 @@ class Source:
     enabled: bool = True
     tags: list[str] = field(default_factory=list)
     channel_id: Optional[str] = None
+    max_items: int = 20
+    same_domain_only: bool = False
 
     @classmethod
     def from_dict(cls, data: dict):
@@ -21,6 +23,8 @@ class Source:
             enabled=data.get("enabled", True),
             tags=data.get("tags", []),
             channel_id=data.get("channel_id"),
+            max_items=data.get("max_items", 20),
+            same_domain_only=data.get("same_domain_only", False),
         )
 
 

@@ -1,7 +1,8 @@
 import html
 import re
 import urllib.request
-from urllib.parse import parse_qs, quote, urlparse
+from html.parser import HTMLParser
+from urllib.parse import parse_qs, quote, urljoin, urlparse
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -18,6 +19,9 @@ NAMESPACES = {
 
 def fetch_feed(source: Source, timeout: int = 15) -> list[FeedItem]:
     url = feed_url(source)
+    if source.type == "webpage":
+        return fetch_webpage(source, url, timeout)
+
     request = urllib.request.Request(
         url,
         headers={
@@ -32,6 +36,141 @@ def fetch_feed(source: Source, timeout: int = 15) -> list[FeedItem]:
     if root.tag.endswith("feed"):
         return parse_atom(source, root)
     return parse_rss(source, root)
+
+
+def fetch_webpage(source: Source, url: str, timeout: int = 15) -> list[FeedItem]:
+    request = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "FintechLarkRadar/0.1 (+https://example.local)",
+            "Accept": "text/html",
+        },
+    )
+    with urllib.request.urlopen(request, timeout=timeout) as response:
+        body = response.read().decode("utf-8", errors="replace")
+
+    parser = LinkExtractor(base_url=url, same_domain_only=source.same_domain_only)
+    parser.feed(body)
+    items = []
+    seen = set()
+    for link, title in parser.links:
+        published_at, cleaned_title = parse_webpage_title(clean(title))
+        if not looks_like_article_title(cleaned_title):
+            continue
+        key = link.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        items.append(
+            FeedItem(
+                source_name=source.name,
+                source_url=source.url,
+                title=cleaned_title,
+                link=link,
+                summary=f"Source page item from {source.name}.",
+                published_at=published_at,
+                source_type=source.type,
+            )
+        )
+        if len(items) >= source.max_items:
+            break
+    return items
+
+
+class LinkExtractor(HTMLParser):
+    def __init__(self, base_url: str, same_domain_only: bool = False):
+        super().__init__()
+        self.base_url = base_url
+        self.base_domain = urlparse(base_url).netloc
+        self.same_domain_only = same_domain_only
+        self.current_href = ""
+        self.current_text = []
+        self.links = []
+
+    def handle_starttag(self, tag: str, attrs):
+        if tag != "a":
+            return
+        attrs_dict = dict(attrs)
+        href = attrs_dict.get("href", "")
+        if not href or href.startswith("#") or href.startswith("mailto:"):
+            return
+        absolute = urljoin(self.base_url, href)
+        parsed = urlparse(absolute)
+        if parsed.scheme not in {"http", "https"}:
+            return
+        if self.same_domain_only and parsed.netloc != self.base_domain:
+            return
+        self.current_href = absolute
+        self.current_text = []
+
+    def handle_data(self, data: str):
+        if self.current_href:
+            self.current_text.append(data)
+
+    def handle_endtag(self, tag: str):
+        if tag != "a" or not self.current_href:
+            return
+        text_value = " ".join(" ".join(self.current_text).split())
+        if text_value:
+            self.links.append((self.current_href, text_value))
+        self.current_href = ""
+        self.current_text = []
+
+
+def looks_like_article_title(title: str) -> bool:
+    if len(title) < 30 or len(title) > 180:
+        return False
+    lowered = title.lower()
+    blocked = {
+        "subscribe",
+        "home",
+        "news",
+        "research",
+        "data",
+        "events",
+        "read full briefing",
+        "see all market updates",
+    }
+    return not any(value == lowered or lowered.startswith(value) for value in blocked)
+
+
+def parse_webpage_title(title: str):
+    month_map = {
+        "jan": 1,
+        "feb": 2,
+        "mar": 3,
+        "apr": 4,
+        "may": 5,
+        "mai": 5,
+        "jun": 6,
+        "jul": 7,
+        "aug": 8,
+        "sep": 9,
+        "oct": 10,
+        "okt": 10,
+        "nov": 11,
+        "dec": 12,
+        "dez": 12,
+    }
+    match = re.search(
+        r"(?:^|\s·\s)(\d{1,2})\s+([A-Za-zÄÖÜäöü]{3,})\s+(\d{2,4})(?:\s|$)",
+        title,
+    )
+    if not match:
+        return None, title
+
+    day = int(match.group(1))
+    month = month_map.get(match.group(2).lower()[:3])
+    year = int(match.group(3))
+    if year < 100:
+        year += 2000
+    if not month:
+        return None, title
+
+    cleaned = title[match.end() :].strip(" ·-")
+    if not cleaned:
+        cleaned = title
+    return datetime(year, month, day, tzinfo=timezone.utc), cleaned
 
 
 def feed_url(source: Source) -> str:
