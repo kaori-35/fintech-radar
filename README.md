@@ -141,7 +141,7 @@ Many KOL sources on X/Twitter, LinkedIn, or private newsletters do not expose re
 
 - Local Mac/Linux machine with `--watch`.
 - macOS `launchd` with `scripts/install_launchd.sh`, so Terminal does not need to stay open.
-- GitHub Actions with `.github/workflows/fintech-radar.yml`, scheduled at 09:00 and 18:00 Asia/Shanghai.
+- GitHub Actions with `.github/workflows/fintech-radar.yml`, scheduled at 09:17 and 18:17 Asia/Shanghai.
 - Cron job every 5 minutes:
 
 ```cron
@@ -165,7 +165,7 @@ OPENAI_API_KEY
 4. Optional: add repository variable `OPENAI_MODEL`, for example `gpt-4.1-mini`.
 5. Open `Actions` -> `Fintech Radar` -> `Run workflow` to test it manually.
 
-The workflow runs at 09:00 and 18:00 Asia/Shanghai. It commits `data/radar.sqlite3` back to the repository after each run so deduplication survives across GitHub Actions runs.
+The workflow runs at 09:17 and 18:17 Asia/Shanghai. GitHub Actions scheduled jobs can be delayed, so the non-zero minute helps avoid the busiest top-of-hour window. It commits `data/radar.sqlite3` back to the repository after each run so deduplication survives across GitHub Actions runs.
 
 ## Notes
 

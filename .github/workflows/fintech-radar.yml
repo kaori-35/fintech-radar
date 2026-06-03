@@ -3,8 +3,9 @@ name: Fintech Radar
 on:
   workflow_dispatch:
   schedule:
-    # GitHub Actions uses UTC. These are 09:00 and 18:00 Asia/Shanghai.
-    - cron: "0 1,10 * * *"
+    # GitHub Actions uses UTC. These are 09:17 and 18:17 Asia/Shanghai.
+    # Avoiding minute 0 reduces schedule delays/skips during GitHub's busiest window.
+    - cron: "17 1,10 * * *"
 
 permissions:
   contents: write
